@@ -5,5 +5,9 @@ export function Ship(length) {
     hit: () => {
       hitCount += 1;
     },
+
+    isSunk: () => {
+      return hitCount === length ? true : false;
+    },
   };
 }
