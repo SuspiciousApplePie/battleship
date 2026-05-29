@@ -30,7 +30,12 @@
   display: flex;
 }
 
-.main .board-border {
-  border: 1px solid black;
+.main .board-container {
   flex: 1;
+  display: flex;
+}
+
+.board-container .board-border {
+  flex: 1;
+  border: 1px solid black;
 }

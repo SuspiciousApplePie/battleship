@@ -4,5 +4,7 @@ export const parentClass = {
 };
 
 export const mainParentClass = {
+  BOARD_CONTAINER: "board-container",
   BOARD_BORDER: "board-border",
+  RANDOMIZER_BORDER: "randomizer-btn-border",
 };
