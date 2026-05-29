@@ -1,0 +1,26 @@
+:root {
+  --padding-sm: 8px;
+  --padding-md: 12px;
+  --padding-lg: 16px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: grid;
+  height: 100vw;
+  grid-template-rows: 70px 1fr 70px;
+}
+
+.container .header {
+  display: flex;
+  align-items: center;
+  border: 1px black solid;
+  padding: var(--padding-sm);
+}
