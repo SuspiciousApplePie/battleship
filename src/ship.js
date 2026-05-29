@@ -1,13 +1,14 @@
 export function Ship(length) {
   let hitCount = 0;
 
+  const isSunk = () => {
+    return hitCount === length ? true : false;
+  };
+
   return {
     hit: () => {
-      hitCount += 1;
+      if (!isSunk()) hitCount += 1;
     },
-
-    isSunk: () => {
-      return hitCount === length ? true : false;
-    },
+    isSunk,
   };
 }
