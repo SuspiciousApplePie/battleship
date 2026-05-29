@@ -9,6 +9,8 @@ export default defineConfig([
       eqeqeq: "error",
       "no-unused-vars": "error",
       "prefer-const": ["error", { ignoreReadBeforeAssign: true }],
+      "no-console": "warn",
+      camelcase: "error",
     },
   },
   eslintConfigPrettier,
