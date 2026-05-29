@@ -14,7 +14,7 @@
 
 .container {
   display: grid;
-  height: 100vw;
+  height: 100vh;
   grid-template-rows: 70px 1fr 70px;
 }
 
@@ -23,4 +23,14 @@
   align-items: center;
   border: 1px black solid;
   padding: var(--padding-sm);
+}
+
+.main {
+  border: 1px solid black;
+  display: flex;
+}
+
+.main .board-border {
+  border: 1px solid black;
+  flex: 1;
 }
