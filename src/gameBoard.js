@@ -2,6 +2,7 @@ import { Ship } from "./ship";
 export function gameBoard() {
   const board = Array.from({ length: 10 }, () => new Array(10).fill(null));
   const ships = [];
+  const missed = [];
 
   function checkForCollision(x, y, size) {
     const row = board[x - 1];
@@ -62,6 +63,7 @@ export function gameBoard() {
         board[x - 1][y - 1] = true;
       } else if (ship === null) {
         board[x - 1][y - 1] = false;
+        missed.push(MissedAttacks(x - 1, y - 1));
       }
     },
     allShipSinked: () => {
@@ -72,5 +74,13 @@ export function gameBoard() {
       });
       return sinked;
     },
+
+    missedAttacks: () => {
+      return [...missed];
+    },
   };
+}
+
+function MissedAttacks(x, y) {
+  return { x, y };
 }

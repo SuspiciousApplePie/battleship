@@ -155,3 +155,38 @@ describe("Vertical Testing", () => {
     expect(board.allShipSinked()).toBe(true);
   });
 });
+
+describe("Missed Attacks", () => {
+  test("Missed attack horizontal", () => {
+    const board = gameBoard();
+    board.placeShipHorizontal(2, 5, 3);
+    board.recieveAttack(5, 3);
+    board.recieveAttack(5, 2);
+    board.recieveAttack(2, 4);
+    board.recieveAttack(2, 5);
+    expect(board.missedAttacks().length).toBe(3);
+    expect(board.allShipSinked()).toBe(false);
+  });
+
+  test("Missed attack vertical", () => {
+    const board = gameBoard();
+    board.placeShipVertical(1, 4, 3);
+    board.recieveAttack(5, 3);
+    board.recieveAttack(5, 2);
+    board.recieveAttack(2, 4);
+    board.recieveAttack(1, 4);
+    expect(board.missedAttacks().length).toBe(2);
+    expect(board.allShipSinked()).toBe(false);
+  });
+
+  test("No missed", () => {
+    const board = gameBoard();
+    board.placeShipVertical(1, 4, 3);
+    board.recieveAttack(1, 4);
+    board.recieveAttack(2, 4);
+    board.recieveAttack(3, 4);
+    board.placeShipHorizontal(1, 5, 4);
+    expect(board.missedAttacks().length).toBe(0);
+    expect(board.allShipSinked()).toBe(true);
+  });
+});
