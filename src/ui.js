@@ -1,8 +1,12 @@
-import { parentClass, mainParentClass } from "./constant.js";
+import {
+  parentClass,
+  mainParentClassContainers,
+  mainParentClassBorders,
+} from "./constant.js";
 
 export function createBoardContainer() {
   const boardContainer = document.createElement("div");
-  boardContainer.className = mainParentClass.BOARD_CONTAINER;
+  boardContainer.className = mainParentClassContainers.BOARD_CONTAINER;
   return boardContainer;
 }
 
@@ -13,25 +17,38 @@ export function renderBoardContainer(boardContainer) {
 
 export function createBoardBorder() {
   const boardBorder = document.createElement("div");
-  boardBorder.className = mainParentClass.BOARD_BORDER;
+  boardBorder.className = mainParentClassBorders.BOARD_BORDER;
   return boardBorder;
 }
 
 export function renderBoardBorder(boardBorder) {
   const boardContainer = document.querySelector(
-    `.${mainParentClass.BOARD_CONTAINER}`,
+    `.${mainParentClassContainers.BOARD_CONTAINER}`,
   );
   boardContainer.appendChild(boardBorder);
 }
 
-export function createRandomizerBorder() {
-  const randomizerBorder = document.createElement("div");
-  randomizerBorder.className = mainParentClass.RANDOMIZER_BORDER;
-  return randomizerBorder;
+export function createMenuContainer() {
+  const menuContainer = document.createElement("div");
+  menuContainer.className = mainParentClassContainers.MENU_CONTAINER;
+  return menuContainer;
 }
 
-export function renderRandomizerBorder(randomizerBorder) {
+export function renderMenuContainer(menuContainer) {
+  const main = document.querySelector(`.${parentClass.MAIN}`);
+  main.appendChild(menuContainer);
+}
+
+export function createMenuBorder() {
+  const menuBorder = document.createElement("div");
+  menuBorder.className = mainParentClassBorders.MENU_BORDER;
+  return menuBorder;
+}
+
+export function renderMenuBorder(menuBorder) {
   const container = document.querySelector(`.${parentClass.CONTAINER}`);
-  const main = container.querySelector(`.${parentClass.MAIN}`);
-  main.appendChild(randomizerBorder);
+  const menuContainer = container.querySelector(
+    `.${mainParentClassContainers.MENU_CONTAINER}`,
+  );
+  menuContainer.appendChild(menuBorder);
 }

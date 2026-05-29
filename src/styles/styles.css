@@ -27,15 +27,25 @@
 
 .main {
   border: 1px solid black;
-  display: flex;
+  display: grid;
+  grid-template-rows: 1fr 60px;
+  flex-direction: column;
 }
 
 .main .board-container {
-  flex: 1;
   display: flex;
 }
 
 .board-container .board-border {
+  flex: 1;
+  border: 1px solid black;
+}
+
+.main .menu-contaner {
+  display: flex;
+}
+
+.menu-contaner .menu-border {
   flex: 1;
   border: 1px solid black;
 }

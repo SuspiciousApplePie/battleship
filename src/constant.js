@@ -3,8 +3,12 @@ export const parentClass = {
   MAIN: "main",
 };
 
-export const mainParentClass = {
+export const mainParentClassContainers = {
   BOARD_CONTAINER: "board-container",
+  MENU_CONTAINER: "menu-container",
+};
+
+export const mainParentClassBorders = {
   BOARD_BORDER: "board-border",
-  RANDOMIZER_BORDER: "randomizer-btn-border",
+  MENU_BORDER: "menu-border",
 };
