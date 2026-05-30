@@ -12,3 +12,8 @@ export const mainParentClassBorders = {
   BOARD_BORDER: "board-border",
   MENU_BORDER: "menu-border",
 };
+
+export const boardClass = {
+  BOARD: "board",
+  CELL: "cell",
+};

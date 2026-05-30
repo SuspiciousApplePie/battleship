@@ -2,6 +2,7 @@
   --padding-sm: 8px;
   --padding-md: 12px;
   --padding-lg: 16px;
+  --padding-xlg: 24px;
 }
 
 *,
@@ -39,6 +40,10 @@
 .board-container .board-border {
   flex: 1;
   border: 1px solid black;
+  display: flex;
+  padding: var(--padding-xlg);
+  padding-left: calc(var(--padding-xlg) * 3);
+  padding-right: calc(var(--padding-xlg) * 3);
 }
 
 .main .menu-contaner {
@@ -48,4 +53,16 @@
 .menu-contaner .menu-border {
   flex: 1;
   border: 1px solid black;
+}
+
+.board-border .board {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  flex: 1;
+}
+
+.board .cell {
+  border: 1px solid black;
+  cursor: pointer;
 }

@@ -2,6 +2,7 @@ import {
   parentClass,
   mainParentClassContainers,
   mainParentClassBorders,
+  boardClass,
 } from "./constant.js";
 
 export function createBoardContainer() {
@@ -26,6 +27,42 @@ export function renderBoardBorder(boardBorder) {
     `.${mainParentClassContainers.BOARD_CONTAINER}`,
   );
   boardContainer.appendChild(boardBorder);
+}
+
+export function createBoard() {
+  let x = 1;
+  let y = 1;
+  const board = document.createElement("div");
+  board.className = boardClass.BOARD;
+
+  while (x <= 10 && y <= 10) {
+    const cell = document.createElement("div");
+    cell.dataset.x = x;
+    cell.dataset.y = y;
+    cell.className = boardClass.CELL;
+    board.appendChild(cell);
+
+    if (y === 10 && x !== 10) {
+      x++;
+      y = 1;
+    } else {
+      y++;
+    }
+  }
+
+  return board;
+}
+
+export function renderBoard(board) {
+  const main = document.querySelector(`.${parentClass.MAIN}`);
+  const boardBorder = main.querySelectorAll(
+    `.${mainParentClassBorders.BOARD_BORDER}`,
+  );
+
+  boardBorder.forEach((boardBorder) => {
+    const clone = board.cloneNode(true);
+    boardBorder.appendChild(clone);
+  });
 }
 
 export function createMenuContainer() {
