@@ -8,6 +8,7 @@ import {
   renderBoard,
   createMenuBorder,
   renderMenuBorder,
+  createRandomizeBtn,
   createStartButton,
   renderBtn,
 } from "./ui.js";
@@ -35,6 +36,9 @@ export function init() {
 
   const menuBorder = createMenuBorder();
   renderMenuBorder(menuBorder, main);
+
+  const randomizeBtn = createRandomizeBtn();
+  renderBtn(randomizeBtn, menuBorder);
 
   const startBtn = createStartButton();
   renderBtn(startBtn, menuBorder);

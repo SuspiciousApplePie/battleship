@@ -46,13 +46,12 @@
   padding-right: calc(var(--padding-xlg) * 3);
 }
 
-.main .menu-contaner {
-  display: flex;
-}
-
-.menu-contaner .menu-border {
+.menu-border {
   flex: 1;
   border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  padding: var(--padding-sm);
 }
 
 .board-border .board {

@@ -29,4 +29,6 @@ export const btnClass = {
   START_TXT: "Start Game",
   QUIT: "quit-btn",
   QUIT_TXT: "Quit Game",
+  RANDOMIZE: "randomize-btn",
+  RANDOMIZE_TXT: "Randomize",
 };

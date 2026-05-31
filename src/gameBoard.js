@@ -46,6 +46,7 @@ export function gameBoard() {
       const ship = Ship(size);
       board[x - 1].fill(ship, y - 1, y - 1 + size);
       ships.push(ship);
+      return true;
     },
     placeShipVertical: (x, y, size) => {
       if (checkForOutOFRange(y, x, size)) return;
@@ -55,6 +56,7 @@ export function gameBoard() {
         board[i][y - 1] = ship;
       }
       ships.push(ship);
+      return true;
     },
     recieveAttack: (x, y) => {
       const ship = board[x - 1][y - 1];

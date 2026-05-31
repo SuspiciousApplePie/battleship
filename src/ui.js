@@ -12,7 +12,7 @@ export function createBoardContainer() {
 }
 
 export function renderBoardContainer(boardContainer, main) {
-  main.appendChild(boardContainer);
+  main.append(boardContainer);
 }
 
 export function createBoardBorder(id) {
@@ -23,7 +23,7 @@ export function createBoardBorder(id) {
 }
 
 export function renderBoardBorder(boardBorder, boardContainer) {
-  boardContainer.appendChild(boardBorder);
+  boardContainer.append(boardBorder);
 }
 
 export function createBoard() {
@@ -37,7 +37,7 @@ export function createBoard() {
     cell.dataset.x = x;
     cell.dataset.y = y;
     cell.className = boardClass.CELL;
-    board.appendChild(cell);
+    board.append(cell);
 
     if (y === 10 && x !== 10) {
       x++;
@@ -51,7 +51,7 @@ export function createBoard() {
 }
 
 export function renderBoard(board, boardBorder) {
-  boardBorder.appendChild(board);
+  boardBorder.append(board);
 }
 
 export function createMenuContainer() {
@@ -61,7 +61,7 @@ export function createMenuContainer() {
 }
 
 export function renderMenuContainer(menuContainer, main) {
-  main.appendChild(menuContainer);
+  main.append(menuContainer);
 }
 
 export function createMenuBorder() {
@@ -71,7 +71,14 @@ export function createMenuBorder() {
 }
 
 export function renderMenuBorder(menuBorder, menuContainer) {
-  menuContainer.appendChild(menuBorder);
+  menuContainer.append(menuBorder);
+}
+
+export function createRandomizeBtn() {
+  const randomizeBtn = document.createElement("button");
+  randomizeBtn.className = btnClass.RANDOMIZE;
+  randomizeBtn.textContent = btnClass.RANDOMIZE_TXT;
+  return randomizeBtn;
 }
 
 export function createStartButton() {
@@ -93,7 +100,7 @@ export function replaceBtn(newBtn, oldBtn) {
 }
 
 export function renderBtn(btn, border) {
-  border.appendChild(btn);
+  border.append(btn);
 }
 
 export function markAsOccupied(cell) {

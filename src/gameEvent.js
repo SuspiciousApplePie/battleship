@@ -11,6 +11,7 @@ import {
   markAsOccupied,
   createStartButton,
   createQuitButton,
+  createRandomizeBtn,
   replaceBtn,
   unMarkCell,
 } from "./ui.js";
@@ -33,6 +34,8 @@ export function menuOperation(e) {
     getRightBoard().addEventListener("click", attackCell);
     populateAIBoard();
     populateBoardWithShip(mainParentClassBorders.PLAYER_1);
+    const menu = e.target.closest(`.${mainParentClassBorders.MENU_BORDER}`);
+    menu.querySelector(`.${btnClass.RANDOMIZE}`).remove();
     const quitBtn = createQuitButton();
     replaceBtn(quitBtn, e.target);
   }
@@ -49,6 +52,38 @@ export function menuOperation(e) {
     getRightBoard().removeEventListener("click", attackCell);
     const startBtn = createStartButton();
     replaceBtn(startBtn, e.target);
+    const menu = startBtn.closest(`.${mainParentClassBorders.MENU_BORDER}`);
+    menu.prepend(createRandomizeBtn());
+  }
+
+  if (e.target.classList.contains(btnClass.RANDOMIZE)) {
+    player = Player(1);
+    randomize(1, 4, player);
+    randomize(2, 3, player);
+    randomize(3, 2, player);
+    randomize(4, 1, player);
+
+    displayShips(mainParentClassBorders.PLAYER_1, player.board.showGameBoard());
+  }
+}
+
+function randomize(quantity, length, player) {
+  let total = 0;
+
+  while (total < quantity) {
+    const placers = [
+      player.board.placeShipHorizontal,
+      player.board.placeShipVertical,
+    ];
+    const chosenFunc = placers[Math.floor(Math.random() * placers.length)];
+    const isMoveValid = chosenFunc(
+      Math.floor(Math.random() * 10),
+      Math.floor(Math.random() * 10),
+      length,
+    );
+    if (isMoveValid) {
+      total++;
+    }
   }
 }
 
@@ -74,18 +109,15 @@ function attackCell(e) {
 }
 
 function populateBoardWithShip(id) {
-  player.board.placeShipHorizontal(1, 5, 4);
-  player.board.placeShipHorizontal(5, 9, 2);
-  player.board.placeShipVertical(3, 7, 3);
-  player.board.placeShipVertical(8, 6, 1);
+  player.board.placeShipHorizontal(1, 1, 2);
+  player.board.placeShipHorizontal(2, 1, 1);
+
   displayShips(id, player.board.showGameBoard());
 }
 
 function populateAIBoard() {
-  computer.board.placeShipHorizontal(1, 5, 4);
-  computer.board.placeShipHorizontal(5, 9, 2);
-  computer.board.placeShipVertical(3, 7, 3);
-  computer.board.placeShipVertical(8, 6, 1);
+  computer.board.placeShipHorizontal(1, 1, 2);
+  computer.board.placeShipHorizontal(2, 1, 1);
 }
 
 function displayShips(id, board) {
