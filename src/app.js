@@ -6,6 +6,10 @@ import {
   renderBoardContainer,
   renderBoardBorder,
   renderBoard,
+  createMenuBorder,
+  renderMenuBorder,
+  createStartButton,
+  renderBtn,
 } from "./ui.js";
 
 import { startGame, populateBoardWithShip } from "./gameEvent.js";

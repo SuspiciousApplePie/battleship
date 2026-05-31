@@ -81,15 +81,37 @@ export function createStartButton() {
   return startBtn;
 }
 
+export function createQuitButton() {
+  const quitBtn = document.createElement("button");
+  quitBtn.className = btnClass.QUIT;
+  quitBtn.textContent = btnClass.QUIT_TXT;
+  return quitBtn;
+}
+
+export function replaceBtn(newBtn, oldBtn) {
+  oldBtn.replaceWith(newBtn);
+}
+
+export function renderBtn(btn, border) {
+  border.appendChild(btn);
+}
 
 export function markAsOccupied(cell) {
-  cell.classList.add(boardClass.OCCUPIED);
+  cell.className = `${boardClass.CELL} ${boardClass.OCCUPIED}`;
 }
 
 export function markAsMissed(cell) {
-  cell.classList.add(boardClass.MISSED);
+  cell.className = `${boardClass.CELL} ${boardClass.MISSED}`;
 }
 
 export function markAsDestroyed(cell) {
-  cell.classList.add(boardClass.DESTROYED);
+  cell.className = `${boardClass.CELL} ${boardClass.DESTROYED}`;
+}
+
+export function unMarkCell(cell) {
+  cell.className = boardClass.CELL;
+}
+
+export function removeElement(cell) {
+  cell.remove();
 }

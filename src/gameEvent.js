@@ -1,9 +1,22 @@
-import { parentClass, boardClass, mainParentClassBorders } from "./constant.js";
+import {
+  parentClass,
+  boardClass,
+  mainParentClassBorders,
+  btnClass,
+} from "./constant.js";
 import { Player } from "./player.js";
-import { markAsDestroyed, markAsMissed, markAsOccupied } from "./ui.js";
+import {
+  markAsDestroyed,
+  markAsMissed,
+  markAsOccupied,
+  createStartButton,
+  createQuitButton,
+  replaceBtn,
+  unMarkCell,
+} from "./ui.js";
 
-const player = Player(1);
-const computer = Player(0);
+let player = Player(1);
+let computer = Player(0);
 
 function getRightBoard() {
   return document.querySelector(
@@ -19,6 +32,12 @@ function getStartButton() {
   return document.querySelector(`.${btnClass.START}`);
 }
 
+function getQuitBtn() {
+  const quitBtn = document.querySelector(`.${btnClass.QUIT}`);
+  if (!quitBtn) return;
+  return quitBtn;
+}
+
 export function startGame() {
   getRightBoard().addEventListener("click", attackCell);
   populateAIBoard();
@@ -27,6 +46,25 @@ export function startGame() {
   const quitBtn = createQuitButton();
   replaceBtn(quitBtn, startBtn);
   quitBtn.addEventListener("click", quitGame);
+}
+
+function quitGame() {
+  const quitBtn = getQuitBtn();
+  if (quitBtn) {
+    getFooter().textContent = "";
+    player = Player(1);
+    computer = Player(0);
+    populateBoardWithShip(mainParentClassBorders.PLAYER_1);
+    displayShips(
+      mainParentClassBorders.PLAYER_2,
+      computer.board.showGameBoard(),
+    );
+    quitBtn.removeEventListener("click", quitGame);
+    getRightBoard().removeEventListener("click", attackCell);
+    const startBtn = createStartButton();
+    replaceBtn(startBtn, quitBtn);
+    startBtn.addEventListener("click", startGame);
+  }
 }
 
 function attackCell(e) {
@@ -73,6 +111,8 @@ function displayShips(id, board) {
       board[cell.dataset.x - 1][cell.dataset.y - 1] !== null
     ) {
       markAsOccupied(cell);
+    } else {
+      unMarkCell(cell);
     }
   });
 }

@@ -27,3 +27,6 @@ export const boardClass = {
 export const btnClass = {
   START: "start-btn",
   START_TXT: "Start Game",
+  QUIT: "quit-btn",
+  QUIT_TXT: "Quit Game",
+};
