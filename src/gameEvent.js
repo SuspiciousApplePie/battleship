@@ -28,29 +28,16 @@ function getFooter() {
   return document.querySelector(`.${parentClass.FOOTER}`);
 }
 
-function getStartButton() {
-  return document.querySelector(`.${btnClass.START}`);
-}
+export function menuOperation(e) {
+  if (e.target.classList.contains(btnClass.START)) {
+    getRightBoard().addEventListener("click", attackCell);
+    populateAIBoard();
+    populateBoardWithShip(mainParentClassBorders.PLAYER_1);
+    const quitBtn = createQuitButton();
+    replaceBtn(quitBtn, e.target);
+  }
 
-function getQuitBtn() {
-  const quitBtn = document.querySelector(`.${btnClass.QUIT}`);
-  if (!quitBtn) return;
-  return quitBtn;
-}
-
-export function startGame() {
-  getRightBoard().addEventListener("click", attackCell);
-  populateAIBoard();
-  populateBoardWithShip(mainParentClassBorders.PLAYER_1);
-  const startBtn = getStartButton();
-  const quitBtn = createQuitButton();
-  replaceBtn(quitBtn, startBtn);
-  quitBtn.addEventListener("click", quitGame);
-}
-
-function quitGame() {
-  const quitBtn = getQuitBtn();
-  if (quitBtn) {
+  if (e.target.classList.contains(btnClass.QUIT)) {
     getFooter().textContent = "";
     player = Player(1);
     computer = Player(0);
@@ -59,11 +46,9 @@ function quitGame() {
       mainParentClassBorders.PLAYER_2,
       computer.board.showGameBoard(),
     );
-    quitBtn.removeEventListener("click", quitGame);
     getRightBoard().removeEventListener("click", attackCell);
     const startBtn = createStartButton();
-    replaceBtn(startBtn, quitBtn);
-    startBtn.addEventListener("click", startGame);
+    replaceBtn(startBtn, e.target);
   }
 }
 

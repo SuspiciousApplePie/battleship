@@ -12,7 +12,7 @@ import {
   renderBtn,
 } from "./ui.js";
 
-import { startGame, populateBoardWithShip } from "./gameEvent.js";
+import { menuOperation, populateBoardWithShip } from "./gameEvent.js";
 
 import "./styles/styles.css";
 const main = document.querySelector(parentClass.MAIN);
@@ -39,5 +39,5 @@ export function init() {
   const startBtn = createStartButton();
   renderBtn(startBtn, menuBorder);
   populateBoardWithShip(mainParentClassBorders.PLAYER_1);
-  startBtn.addEventListener("click", startGame);
+  menuBorder.addEventListener("click", menuOperation);
 }
