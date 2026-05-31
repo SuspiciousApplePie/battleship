@@ -1,6 +1,7 @@
 export const parentClass = {
   CONTAINER: "container",
   MAIN: "main",
+  FOOTER: "footer",
 };
 
 export const mainParentClassContainers = {
@@ -11,9 +12,14 @@ export const mainParentClassContainers = {
 export const mainParentClassBorders = {
   BOARD_BORDER: "board-border",
   MENU_BORDER: "menu-border",
+  PLAYER_1: "player-one",
+  PLAYER_2: "player-two",
 };
 
 export const boardClass = {
   BOARD: "board",
   CELL: "cell",
+  OCCUPIED: "occupied",
+  MISSED: "missed",
+  DESTROYED: "destroyed",
 };

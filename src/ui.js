@@ -1,5 +1,4 @@
 import {
-  parentClass,
   mainParentClassContainers,
   mainParentClassBorders,
   boardClass,
@@ -11,21 +10,18 @@ export function createBoardContainer() {
   return boardContainer;
 }
 
-export function renderBoardContainer(boardContainer) {
-  const main = document.querySelector(`.${parentClass.MAIN}`);
+export function renderBoardContainer(boardContainer, main) {
   main.appendChild(boardContainer);
 }
 
-export function createBoardBorder() {
+export function createBoardBorder(id) {
   const boardBorder = document.createElement("div");
   boardBorder.className = mainParentClassBorders.BOARD_BORDER;
+  boardBorder.id = id;
   return boardBorder;
 }
 
-export function renderBoardBorder(boardBorder) {
-  const boardContainer = document.querySelector(
-    `.${mainParentClassContainers.BOARD_CONTAINER}`,
-  );
+export function renderBoardBorder(boardBorder, boardContainer) {
   boardContainer.appendChild(boardBorder);
 }
 
@@ -53,16 +49,8 @@ export function createBoard() {
   return board;
 }
 
-export function renderBoard(board) {
-  const main = document.querySelector(`.${parentClass.MAIN}`);
-  const boardBorder = main.querySelectorAll(
-    `.${mainParentClassBorders.BOARD_BORDER}`,
-  );
-
-  boardBorder.forEach((boardBorder) => {
-    const clone = board.cloneNode(true);
-    boardBorder.appendChild(clone);
-  });
+export function renderBoard(board, boardBorder) {
+  boardBorder.appendChild(board);
 }
 
 export function createMenuContainer() {
@@ -71,8 +59,7 @@ export function createMenuContainer() {
   return menuContainer;
 }
 
-export function renderMenuContainer(menuContainer) {
-  const main = document.querySelector(`.${parentClass.MAIN}`);
+export function renderMenuContainer(menuContainer, main) {
   main.appendChild(menuContainer);
 }
 
@@ -82,10 +69,18 @@ export function createMenuBorder() {
   return menuBorder;
 }
 
-export function renderMenuBorder(menuBorder) {
-  const container = document.querySelector(`.${parentClass.CONTAINER}`);
-  const menuContainer = container.querySelector(
-    `.${mainParentClassContainers.MENU_CONTAINER}`,
-  );
+export function renderMenuBorder(menuBorder, menuContainer) {
   menuContainer.appendChild(menuBorder);
+}
+
+export function markAsOccupied(cell) {
+  cell.classList.add(boardClass.OCCUPIED);
+}
+
+export function markAsMissed(cell) {
+  cell.classList.add(boardClass.MISSED);
+}
+
+export function markAsDestroyed(cell) {
+  cell.classList.add(boardClass.DESTROYED);
 }

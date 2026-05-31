@@ -1,4 +1,4 @@
-import { Ship } from "./ship";
+import { Ship } from "./ship.js";
 export function gameBoard() {
   const board = Array.from({ length: 10 }, () => new Array(10).fill(null));
   const ships = [];
@@ -61,10 +61,13 @@ export function gameBoard() {
       if (typeof ship === "object" && ship !== null) {
         ship.hit();
         board[x - 1][y - 1] = true;
+        return true;
       } else if (ship === null) {
         board[x - 1][y - 1] = false;
         missed.push(MissedAttacks(x - 1, y - 1));
+        return false;
       }
+      return null;
     },
     allShipSinked: () => {
       let sinked = true;
@@ -77,6 +80,10 @@ export function gameBoard() {
 
     missedAttacks: () => {
       return [...missed];
+    },
+
+    showGameBoard: () => {
+      return [...board];
     },
   };
 }

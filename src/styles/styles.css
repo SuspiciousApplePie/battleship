@@ -66,3 +66,15 @@
   border: 1px solid black;
   cursor: pointer;
 }
+
+.cell.occupied {
+  background-color: green;
+}
+
+.cell.missed {
+  background-color: gray;
+}
+
+.cell.destroyed {
+  background-color: red;
+}
