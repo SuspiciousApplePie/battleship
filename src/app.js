@@ -8,11 +8,7 @@ import {
   renderBoard,
 } from "./ui.js";
 
-import {
-  populateBoardWithShip,
-  populateAIBoard,
-  attackCell,
-} from "./gameEvent.js";
+import { startGame, populateBoardWithShip } from "./gameEvent.js";
 
 import "./styles/styles.css";
 const main = document.querySelector(parentClass.MAIN);
@@ -33,7 +29,11 @@ export function init() {
   const rightBoard = createBoard();
   renderBoard(rightBoard, rightBorder);
 
+  const menuBorder = createMenuBorder();
+  renderMenuBorder(menuBorder, main);
+
+  const startBtn = createStartButton();
+  renderBtn(startBtn, menuBorder);
   populateBoardWithShip(mainParentClassBorders.PLAYER_1);
-  populateAIBoard();
-  rightBoard.addEventListener("click", attackCell);
+  startBtn.addEventListener("click", startGame);
 }

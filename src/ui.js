@@ -2,6 +2,7 @@ import {
   mainParentClassContainers,
   mainParentClassBorders,
   boardClass,
+  btnClass,
 } from "./constant.js";
 
 export function createBoardContainer() {
@@ -72,6 +73,14 @@ export function createMenuBorder() {
 export function renderMenuBorder(menuBorder, menuContainer) {
   menuContainer.appendChild(menuBorder);
 }
+
+export function createStartButton() {
+  const startBtn = document.createElement("button");
+  startBtn.className = btnClass.START;
+  startBtn.textContent = btnClass.START_TXT;
+  return startBtn;
+}
+
 
 export function markAsOccupied(cell) {
   cell.classList.add(boardClass.OCCUPIED);

@@ -23,3 +23,7 @@ export const boardClass = {
   MISSED: "missed",
   DESTROYED: "destroyed",
 };
+
+export const btnClass = {
+  START: "start-btn",
+  START_TXT: "Start Game",
